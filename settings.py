@@ -1,9 +1,18 @@
 from os import environ
+from dataclasses import dataclass
 
 from dotenv import load_dotenv
 
 from exceptions import IncorrectSettingsSetupError, IncorrectEnvVarSetupError
-from project_dataclasses import Settings
+
+
+@dataclass
+class Settings:
+
+    BOT_TOKEN: str
+    DB_URL: str
+    DEBUG: bool
+    API_BASE_URL: str
 
 
 def get_settings() -> Settings:

@@ -6,7 +6,7 @@ from aiogram.fsm.context import FSMContext
 from requests import post
 
 from states import LoginStates
-from api_uri_creator import APIURICreator
+from classes import APIURLCreator
 from sql.crud import UserCrud
 from sql.database import Session
 
@@ -30,7 +30,7 @@ async def login(message: Message, state: FSMContext, command: CommandObject):
 
         return
 
-    response = post(await APIURICreator.get_login_uri(), data={'username': args[0], 'password': args[1]})
+    response = post(APIURLCreator.LOGIN_URL, data={'username': args[0], 'password': args[1], 'scope': 'p2p_request'})
 
     match response.status_code:
 

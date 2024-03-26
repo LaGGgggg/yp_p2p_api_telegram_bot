@@ -2,10 +2,9 @@ from aiogram import Router
 from aiogram.types import Message
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
-from requests import get
 
 from states import LoginStates, AddP2PRequestStates
-from api_uri_creator import APIURICreator
+from classes import APIURLCreator, APIRequestCreator
 from filters import LoggedInUserFilter
 
 
@@ -41,24 +40,17 @@ async def add_p2p_request_waiting_for_link(message: Message, state: FSMContext):
 
         return
 
-    response = get(
-        await APIURICreator.get_create_p2p_request_uri(), params={'repository_link': link, 'comment': message.text}
+    is_success, _ = await APIRequestCreator(message.from_user.id).do_response(
+        message,
+        state,
+        'post',
+        APIURLCreator.CREATE_P2P_REQUEST_URL,
+        params={'repository_link': link, 'comment': message.text},
     )
 
-    match response.status_code:
+    if is_success:
 
-        case 401:
+        await message.answer('Ваш запрос создан успешно!')
 
-            await message.answer('Не удалось войти в аккаунт, пожалуйста, войдите заново')
-
-            await state.set_state(LoginStates.NOT_LOGGED_IN)
-
-        case 200:
-
-            await message.answer('Ваш запрос создан успешно!')
-
-            await state.set_data({})
-            await state.set_state(LoginStates.LOGGED_IN)
-
-        case _:
-            await message.answer('Ошибка обращения к API, попробуйте ещё раз или обратитесь в поддержку')
+        await state.set_data({})
+        await state.set_state(LoginStates.LOGGED_IN)

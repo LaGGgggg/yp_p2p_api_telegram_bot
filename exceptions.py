@@ -14,3 +14,12 @@ class IncorrectSettingsSetupError(Exception):
 
     def __str__(self) -> str:
         return f'Incorrect settings setup: {self.context}'
+
+
+class UnknownHTTPMethodError(Exception):
+
+    def __init__(self, method: str = '') -> None:
+        self.method = method
+
+    def __str__(self) -> str:
+        return f'Unknown HTTP method passed: {self.method}'
