@@ -77,7 +77,7 @@ cd yp_p2p_api_telegram_bot
 
 ```dotenv
 BOT_TOKEN=<your_token_for_tg_bot>
-DB_URL=postgresql://<username>:<password>@localhost:5432/<database_name>
+DB_URL=postgresql://<username>:<password>@postgres:5432/<database_name>
 API_BASE_URL=<your_api_url>
 DEBUG=True
 
