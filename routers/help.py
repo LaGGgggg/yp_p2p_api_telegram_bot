@@ -7,8 +7,8 @@ from aiogram.enums import ParseMode
 router = Router()
 
 
-@router.message(Command('help'))
-async def send_help_message(message: Message):
+@router.message(Command('help', 'start'))
+async def start(message: Message):
     await message.answer(
         'Здесь вы можете присылать ссылки на ваши проекты, чтобы их проверили, и самому ревьюить проекты других '
         'пользователей.  Вот краткая инструкция пользования ботом:\n\n'
