@@ -46,10 +46,65 @@ _**Не забудьте поменять значения на свои! (по�
 #### Больше о переменных:
 
 BOT_TOKEN - токен telegram-бота<br>
-DB_URL - url базы данных (не обязательно postgresql)<br>
+DB_URL - [url базы данных](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls) sqlalchemy<br>
 API_BASE_URL - url API<br>
 DEBUG - True/False, определяет логику логирования, в продакшене должен (must) быть False<br>
 
 ### 7. Запустите проект
 
-Запустите файл main.py
+```bash
+python main.py
+```
+
+# Продакшен настройка
+
+### 1. Установите [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+### 2. Установите [docker](https://docs.docker.com/engine/install/)
+
+### 3. Установите [docker compose plugin](https://docs.docker.com/compose/install/linux/)
+
+### 4. Клонируйте репозиторий
+
+```bash
+git clone https://github.com/LaGGgggg/yp_p2p_api_telegram_bot.git
+cd yp_p2p_api_telegram_bot
+```
+
+### 5. Установите переменные окружения (environment variables)
+
+Создайте файл `.env`. После скопируйте это в него
+
+```dotenv
+BOT_TOKEN=<your_token_for_tg_bot>
+DB_URL=postgresql://<username>:<password>@localhost:5432/<database_name>
+API_BASE_URL=<your_api_url>
+DEBUG=True
+```
+_**Не забудьте поменять значения на свои! (поставьте их после "=")**_
+
+#### Больше о переменных:
+
+BOT_TOKEN - токен telegram-бота<br>
+DB_URL - [url базы данных](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls) sqlalchemy<br>
+API_BASE_URL - url API<br>
+DEBUG - True/False, определяет логику логирования, в продакшене должен (must) быть False<br>
+
+POSTGRES_USER - [POSTGRES_USER](https://hub.docker.com/_/postgres) стандартная переменная окружения docker<br>
+POSTGRES_PASSWORD - [POSTGRES_PASSWORD](https://hub.docker.com/_/postgres) стандартная переменная окружения docker<br>
+POSTGRES_DB - [POSTGRES_DB](https://hub.docker.com/_/postgres) стандартная переменная окружения docker<br>
+POSTGRES_HOST - [POSTGRES_HOST](https://hub.docker.com/_/postgres) стандартная переменная окружения docker<br>
+POSTGRES_PORT - [POSTGRES_PORT](https://hub.docker.com/_/postgres) стандартная переменная окружения docker<br>
+PGDATA - [PGDATA](https://hub.docker.com/_/postgres) стандартная переменная окружения docker<br>
+
+### 8. Запустите docker compose
+
+```bash
+docker compose up -d
+```
+
+### 9. После успешного запуска проверьте сервер
+
+```bash
+docker compose logs -f
+```
