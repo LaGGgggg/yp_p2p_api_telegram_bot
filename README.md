@@ -105,13 +105,13 @@ POSTGRES_HOST - [POSTGRES_HOST](https://hub.docker.com/_/postgres) станда�
 POSTGRES_PORT - [POSTGRES_PORT](https://hub.docker.com/_/postgres) стандартная переменная окружения docker<br>
 PGDATA - [PGDATA](https://hub.docker.com/_/postgres) стандартная переменная окружения docker<br>
 
-### 8. Запустите docker compose
+### 6. Запустите docker compose
 
 ```bash
 docker compose up -d
 ```
 
-### 9. После успешного запуска проверьте сервер
+### 7. После успешного запуска проверьте сервер
 
 ```bash
 docker compose logs -f
