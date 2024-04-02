@@ -80,6 +80,14 @@ BOT_TOKEN=<your_token_for_tg_bot>
 DB_URL=postgresql://<username>:<password>@localhost:5432/<database_name>
 API_BASE_URL=<your_api_url>
 DEBUG=True
+
+# docker-compose section
+POSTGRES_USER=<username>
+POSTGRES_PASSWORD=<password>
+POSTGRES_DB=<database_name>
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+PGDATA=/var/lib/postgresql/data/pgdata
 ```
 _**Не забудьте поменять значения на свои! (поставьте их после "=")**_
 
