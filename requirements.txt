@@ -1,5 +1,5 @@
 aiogram==3.4.1
 python-dotenv==1.0.0
 SQLAlchemy==2.0.28
-requests==2.32.0
+requests==2.32.4
 psycopg2-binary==2.9.9
