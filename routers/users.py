@@ -31,7 +31,7 @@ async def login(message: Message, state: FSMContext, command: CommandObject):
         return
 
     response = post(APIURLCreator.LOGIN_URL, data={'username': args[0], 'password': args[1], 'scope': 'p2p_request'})
-
+    # TODO Вот тут чет огроменная вложенность вышла, я бы вынес логику с апи в отдельный класс
     match response.status_code:
 
         case 401:
